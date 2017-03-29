@@ -13,7 +13,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
 
         $('<script>var params'+el.id+' = [];params'+el.id+'["images"] = ["'+x.files.toString().split(",").join("\", \"")+'"];</' + 'script>').appendTo(document.body);
-       document.getElementById(el.id).innerHTML += '<div class="papaya" data-params="params'+el.id+'"></div><div></div>';
+       document.getElementById(el.id).innerHTML += '<div class="papaya" data-params="params'+el.id+'"></div><div>&nbsp;</div>';
       },
 
       resize: function(width, height) {
