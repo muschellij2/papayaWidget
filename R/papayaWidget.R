@@ -23,12 +23,6 @@ papayaWidget <- function(img, elementId, width = NULL, height = NULL) {
   )
 }
 
-papayaWidget_html <- function(id, style, class, ...){
-  tags$div(id = id,
-           class = paste('papaya', class),
-           `data-params` = "params")
-}
-
 #' Shiny bindings for papayaWidget
 #'
 #' Output and render functions for using papayaWidget within Shiny
