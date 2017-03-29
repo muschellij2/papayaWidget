@@ -10,7 +10,13 @@
 #' @importFrom base64enc base64encode
 papayaWidget <- function(img, elementId, width = NULL, height = NULL) {
 
-  x <- list (files = img)
+  
+  img_check = neurobase::checkimg(img)
+  encoded_img = sapply(img_check,base64enc::base64encode)
+  x <- list (
+    data = encoded_img,
+    names = img
+    )
   
   # create widget
   htmlwidgets::createWidget(
