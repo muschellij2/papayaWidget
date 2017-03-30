@@ -12,10 +12,9 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-        // var sample_image = x.img_str;
-        // var params = {encodedImages: ['sample_image']};
-        console.log(params);
+       // $('<script>var params'+el.id+' = [];params'+el.id+'["images"] = ["'+x.names.toString().split(",").join("\", \"")+'"];</' + 'script>').appendTo(document.body);
+       $('<script>var params'+el.id+' = [];params'+el.id+'["encodedImages"] = ["'+x.data+'"];</' + 'script>').appendTo(document.body);
+       document.getElementById(el.id).innerHTML += '<div class="papaya" data-params="params'+el.id+'"></div>';
       },
 
       resize: function(width, height) {
