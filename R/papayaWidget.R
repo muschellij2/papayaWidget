@@ -8,15 +8,14 @@
 #' @importFrom htmltools tags htmlDependency
 #' @importFrom neurobase checkimg
 #' @importFrom base64enc base64encode
-papayaWidget <- function(img, elementId, width = NULL, height = NULL) {
-
+papayaWidget <- function(img, passingMethod, elementId, width = NULL, height = NULL) {
   
-  img_check = neurobase::checkimg(img)
-  encoded_img = sapply(img_check,base64enc::base64encode)
+  fileData <- if(passingMethod == "embed") toJSON(sapply(img,base64enc::base64encode)) else ''
   x <- list (
-    data = encoded_img,
-    names = img
-    )
+    data = fileData,
+    names = img,
+    passingMethod = passingMethod
+  )
   
   # create widget
   htmlwidgets::createWidget(
@@ -47,7 +46,7 @@ papayaWidget <- function(img, elementId, width = NULL, height = NULL) {
 #'
 #' @export
 papayaWidgetOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'papayaWidget', width, height, package = 'papayaWidget')
+  htmlwidgets::shinyWidgetOutput(outputId, "papayaWidget", width, height, package = "papayaWidget")
 }
 
 #' @rdname papayaWidget-shiny
