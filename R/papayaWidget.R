@@ -8,37 +8,27 @@
 #' @importFrom htmltools tags htmlDependency
 #' @importFrom neurobase checkimg
 #' @importFrom base64enc base64encode
-papayaWidget <- function(img, elementId = NULL, width = NULL, height = NULL) {
+#' @importFrom jsonlite toJSON
+papayaWidget <- function(img, passingMethod, elementId, width = NULL, height = NULL) {
 
-
-  img_check = neurobase::checkimg(img)
-  encoded_img = sapply(img_check, base64enc::base64encode)
-  if (is.null(elementId)) {
-    elementId = basename(tempfile())
+  if (passingMethod == "embed") {
+    fileData = sapply(img,base64enc::base64encode)
+    fileData <- jsonlite::toJSON(fileData)
+  } else {
+      fileData = ""
   }
-  x <- list(
-    data = encoded_img
-  )
-
-  # n_images = length(encoded_img)
-  # img_names = names(encoded_img) = paste0("sample_image", seq(n_images))
-  #
-  # ################################
-  # # pasting together
-  # ################################
-  # eimages = paste0("'", img_names, "'")
-  # ################################
-  # # if multiple - then [['sample1'], ['sample2']]
-  # # otherwise ['sample']
-  # ################################
-  # if (n_images > 1) {
-  #   eimages = paste0("[", eimages, "]")
-  #   eimages = paste(eimages, collapse = ", ")
+  # img_check = neurobase::checkimg(img)
+  # encoded_img = sapply(img_check, base64enc::base64encode)
+  # if (is.null(elementId)) {
+  #   elementId = basename(tempfile())
   # }
-
-  # add dependencies for jquery
-  deps <- list(
-    jquery = rmarkdown::html_dependency_jquery()
+  # x <- list(
+  #   data = encoded_img
+  # )
+  x <- list(
+    data = fileData,
+    names = img,
+    passingMethod = passingMethod
   )
 
   # create widget
@@ -71,7 +61,7 @@ papayaWidget <- function(img, elementId = NULL, width = NULL, height = NULL) {
 #'
 #' @export
 papayaWidgetOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'papayaWidget', width, height, package = 'papayaWidget')
+  htmlwidgets::shinyWidgetOutput(outputId, "papayaWidget", width, height, package = "papayaWidget")
 }
 
 #' @rdname papayaWidget-shiny
