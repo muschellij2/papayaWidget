@@ -8,24 +8,48 @@
 #' @importFrom htmltools tags htmlDependency
 #' @importFrom neurobase checkimg
 #' @importFrom base64enc base64encode
-papayaWidget <- function(img, elementId, width = NULL, height = NULL) {
+papayaWidget <- function(img, elementId = NULL, width = NULL, height = NULL) {
 
-  
+
   img_check = neurobase::checkimg(img)
-  encoded_img = sapply(img_check,base64enc::base64encode)
-  x <- list (
-    data = encoded_img,
-    names = img
-    )
-  
+  encoded_img = sapply(img_check, base64enc::base64encode)
+  if (is.null(elementId)) {
+    elementId = basename(tempfile())
+  }
+  x <- list(
+    data = encoded_img
+  )
+
+  # n_images = length(encoded_img)
+  # img_names = names(encoded_img) = paste0("sample_image", seq(n_images))
+  #
+  # ################################
+  # # pasting together
+  # ################################
+  # eimages = paste0("'", img_names, "'")
+  # ################################
+  # # if multiple - then [['sample1'], ['sample2']]
+  # # otherwise ['sample']
+  # ################################
+  # if (n_images > 1) {
+  #   eimages = paste0("[", eimages, "]")
+  #   eimages = paste(eimages, collapse = ", ")
+  # }
+
+  # add dependencies for jquery
+  deps <- list(
+    jquery = rmarkdown::html_dependency_jquery()
+  )
+
   # create widget
   htmlwidgets::createWidget(
     name = 'papayaWidget',
-    x,
+    x = x,
     width = width,
     height = height,
     package = 'papayaWidget',
-    elementId = elementId
+    elementId = elementId,
+    dependencies = deps
   )
 }
 

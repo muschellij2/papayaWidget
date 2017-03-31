@@ -4,7 +4,7 @@
 \alias{papayaWidget}
 \title{<Add Title>}
 \usage{
-papayaWidget(img, width = NULL, height = NULL, elementId = NULL)
+papayaWidget(img, elementId = NULL, width = NULL, height = NULL)
 }
 \description{
 <Add Description>
