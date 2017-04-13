@@ -1,6 +1,6 @@
 Package: papayaWidget
 Title: What the Package Does (one line, title case)
-Version: 0.1
+Version: 0.2
 Authors@R: c(person("John", "Muschelli", 
     email = "muschellij2@gmail.com", role = c("aut", "cre")), 
     person("Adi", "Gherman", role = c("aut")))
@@ -13,5 +13,6 @@ Imports:
     htmltools,
     htmlwidgets,
     neurobase,
-    base64enc
+    base64enc,
+    jsonlite
 RoxygenNote: 6.0.1
