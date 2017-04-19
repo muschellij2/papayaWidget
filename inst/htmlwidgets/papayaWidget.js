@@ -17,7 +17,7 @@ HTMLWidgets.widget({
             $('<script>var params'+el.id+' = [];params'+el.id+'["images"] = ["'+x.names.toString().split(",").join("\", \"")+'"];</' + 'script>').appendTo(document.body);
             break;
         case "embed":
-            eval(x.params)
+            eval(x.params);
             $('<script>var paramsimg2 = [];paramsimg2["encodedImages"] = ['+x.enc_img_str+'];</script>').appendTo(document.body);
             break;
         default:
