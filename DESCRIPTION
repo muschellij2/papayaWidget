@@ -1,5 +1,5 @@
 Package: papayaWidget
-Title: Rmarkdown papaya embeding
+Title: Rmarkdown papaya embedding
 Version: 0.3
 Authors@R: c(person("John", "Muschelli", 
     email = "muschellij2@gmail.com", role = c("aut", "cre")), 
