@@ -45,8 +45,8 @@ papayaWidget <- function(img, passingMethod, elementId, width = NULL, height = N
     width = width,
     height = height,
     package = 'papayaWidget',
-    elementId = elementId,
-    dependencies = deps
+    elementId = elementId
+  #  dependencies = deps
   )
 }
 
