@@ -9,22 +9,26 @@
 #' @importFrom neurobase checkimg
 #' @importFrom base64enc base64encode
 #' @importFrom jsonlite toJSON
-papayaWidget <- function(img, passingMethod, elementId, width = NULL, height = NULL) {
+papayaWidget <- function(
+  img,
+  passingMethod = c("embed", "file"), elementId = NULL,
+  width = NULL, height = NULL) {
 
+  img = checkimg(img)
+  passingMethod = match.arg(passingMethod)
   if (passingMethod == "embed") {
-    fileData = sapply(img,base64enc::base64encode)
+    fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
   } else {
-      fileData = ""
+    fileData = ""
   }
-  # img_check = neurobase::checkimg(img)
-  # encoded_img = sapply(img_check, base64enc::base64encode)
-  # if (is.null(elementId)) {
-  #   elementId = basename(tempfile())
-  # }
-  # x <- list(
-  #   data = encoded_img
-  # )
+  if (is.null(elementId)) {
+    elementId = basename(tempfile())
+  }
+
+  deps = list(
+    jquery = rmarkdown::html_dependency_jquery()
+  )
   x <- list(
     data = fileData,
     names = img,
@@ -61,7 +65,8 @@ papayaWidget <- function(img, passingMethod, elementId, width = NULL, height = N
 #'
 #' @export
 papayaWidgetOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, "papayaWidget", width, height, package = "papayaWidget")
+  htmlwidgets::shinyWidgetOutput(outputId, "papayaWidget", width,
+                                 height, package = "papayaWidget")
 }
 
 #' @rdname papayaWidget-shiny
