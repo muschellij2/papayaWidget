@@ -19,18 +19,25 @@ papayaWidget <- function(
   if (passingMethod == "embed") {
     fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
+    embed_params_def <- paste0("window.data",elementId,0:(length(img)-1)," = x.data[",0:(length(img)-1),"]; ",collapse="")
+    embed_encoded_img_string <- paste0("\"data",elementId,0:(length(img)-1),"\",",collapse="")
+    embed_encoded_img_string <- substr(embed_encoded_img_string,1,nchar(embed_encoded_img_string)-1)
   } else {
-    fileData = ""
+      fileData = ""
+      embed_params_def = ""
+      embed_encoded_img_string = ""
   }
   if (is.null(elementId)) {
     elementId = basename(tempfile())
   }
 
-  deps = list(
-    jquery = rmarkdown::html_dependency_jquery()
-  )
+  # deps = list(
+  #   jquery = rmarkdown::html_dependency_jquery()
+  # )
   x <- list(
     data = fileData,
+    params = embed_params_def,
+    enc_img_str = embed_encoded_img_string,
     names = img,
     passingMethod = passingMethod
   )
@@ -42,8 +49,7 @@ papayaWidget <- function(
     width = width,
     height = height,
     package = 'papayaWidget',
-    elementId = elementId,
-    dependencies = deps
+    elementId = elementId
   )
 }
 
