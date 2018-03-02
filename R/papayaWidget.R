@@ -1,6 +1,6 @@
-#' <Add Title>
+#' @title Creating a Papaya widget
 #'
-#' <Add Description>
+#' Wraps a widget for the Papaya JavaScript library
 #'
 #' @import htmlwidgets
 #'
@@ -11,35 +11,27 @@
 #' @importFrom jsonlite toJSON
 papayaWidget <- function(
   img,
-  passingMethod = c("embed", "file"), elementId = NULL,
+  elementId = NULL,
   width = NULL, height = NULL) {
 
   img = checkimg(img)
-  passingMethod = match.arg(passingMethod)
-  if (passingMethod == "embed") {
+  # passingMethod = match.arg(passingMethod)
+  # if (passingMethod == "embed") {
     fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
-    embed_params_def <- paste0("window.data",elementId,0:(length(img)-1)," = x.data[",0:(length(img)-1),"]; ",collapse="")
-    embed_encoded_img_string <- paste0("\"data",elementId,0:(length(img)-1),"\",",collapse="")
-    embed_encoded_img_string <- substr(embed_encoded_img_string,1,nchar(embed_encoded_img_string)-1)
-  } else {
-      fileData = ""
-      embed_params_def = ""
-      embed_encoded_img_string = ""
-  }
+    # names(fileData) = "encodedImages"
+    # embed_params_def <- paste0("window.data",elementId,0:(length(img)-1)," = x.data[",0:(length(img)-1),"]; ",collapse="")
+    # embed_encoded_img_string <- paste0("\"data",elementId,0:(length(img)-1),"\",",collapse="")
+    # embed_encoded_img_string <- substr(embed_encoded_img_string,1,nchar(embed_encoded_img_string)-1)
+  # }
   if (is.null(elementId)) {
     elementId = basename(tempfile())
   }
 
-  # deps = list(
-  #   jquery = rmarkdown::html_dependency_jquery()
-  # )
   x <- list(
-    data = fileData,
-    params = embed_params_def,
-    enc_img_str = embed_encoded_img_string,
-    names = img,
-    passingMethod = passingMethod
+    index = 0,
+    id = elementId,
+    images = fileData
   )
 
   # create widget

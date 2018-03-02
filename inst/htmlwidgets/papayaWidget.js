@@ -11,19 +11,35 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-
-      switch(x.passingMethod.toString()) {
-        case "file":
-            $('<script>var params'+el.id+' = [];params'+el.id+'["images"] = ["'+x.names.toString().split(",").join("\", \"")+'"];</' + 'script>').appendTo(document.body);
-            break;
-        case "embed":
-            eval(x.params);
-            //$('<script>var paramsimg2 = [];paramsimg2["encodedImages"] = ['+x.enc_img_str+'];</script>').appendTo(document.body);
-            $('<script>var params'+el.id+' = [];params'+el.id+'["encodedImages"] = ['+x.enc_img_str+'];</script>').appendTo(document.body);
-            break;
-        default:
-      }
-       document.getElementById(el.id).innerHTML += '<div class="papaya" data-params="params'+el.id+'"></div>';
+        console.log("x index is ");
+        console.log(x.index);
+        console.log("x id are ");
+        console.log(x.id);
+        console.log("x images are ");
+        console.log(x.images);
+        var img = x.images;
+        console.log("img");
+        console.log(img.constructor.name);
+        // console.log(img[0]);
+        // window.img = img;
+        var params = [];
+        var mystring = [];
+        for (var i = 0; i < img.length; ++i) {
+          window["img"+i] = img[i];
+          mystring[i] = "img"+i;
+        }
+        params.encodedImages = mystring ;
+        console.log(window);
+        // img = img[0];
+        // console.log(img.constructor.name);
+        //params.encodedImages = ["img0"];
+        console.log(params);
+        //papaya.Container.addViewer
+        //papaya.Container.addViewer = function (parentName, params, callback) {
+        //papaya.Container.addViewer
+        //papaya.Container.buildContainer()
+        papaya.Container.addViewer(id = x.id, params = params)
+        // papaya.Container.resetViewer(x.index, params);
 
       },
 

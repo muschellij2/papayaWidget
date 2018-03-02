@@ -2,11 +2,9 @@
 % Please edit documentation in R/papayaWidget.R
 \name{papayaWidget}
 \alias{papayaWidget}
-\title{<Add Title>}
+\title{Creating a Papaya widget
+
+Wraps a widget for the Papaya JavaScript library}
 \usage{
-papayaWidget(img, passingMethod = c("embed", "file"), elementId = NULL,
-  width = NULL, height = NULL)
-}
-\description{
-<Add Description>
+papayaWidget(img, elementId = NULL, width = NULL, height = NULL)
 }
