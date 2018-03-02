@@ -2,13 +2,13 @@
 % Please edit documentation in R/papayaWidget.R
 \name{papayaWidget-shiny}
 \alias{papayaWidget-shiny}
-\alias{papayaWidgetOutput}
-\alias{renderPapayaWidget}
+\alias{papayaOutput}
+\alias{renderPapaya}
 \title{Shiny bindings for papayaWidget}
 \usage{
-papayaWidgetOutput(outputId, width = "100\%", height = "400px")
+papayaOutput(outputId, width = "100\%", height = "400px")
 
-renderPapayaWidget(expr, env = parent.frame(), quoted = FALSE)
+renderPapaya(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

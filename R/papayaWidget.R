@@ -14,7 +14,7 @@
 #' @importFrom neurobase checkimg
 #' @importFrom base64enc base64encode
 #' @importFrom jsonlite toJSON
-papayaWidget <- function(
+papaya <- function(
   img,
   elementId = NULL,
   width = NULL, height = NULL) {
@@ -60,14 +60,14 @@ papayaWidget <- function(
 #' @name papayaWidget-shiny
 #'
 #' @export
-papayaWidgetOutput <- function(outputId, width = '100%', height = '400px'){
+papayaOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, "papayaWidget", width,
                                  height, package = "papayaWidget")
 }
 
 #' @rdname papayaWidget-shiny
 #' @export
-renderPapayaWidget <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderPapaya <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, papayaWidgetOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, papayaOutput, env, quoted = TRUE)
 }
