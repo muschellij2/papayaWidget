@@ -2,9 +2,19 @@
 % Please edit documentation in R/papayaWidget.R
 \name{papayaWidget}
 \alias{papayaWidget}
-\title{Creating a Papaya widget
-
-Wraps a widget for the Papaya JavaScript library}
+\title{Creating a Papaya widget}
 \usage{
 papayaWidget(img, elementId = NULL, width = NULL, height = NULL)
+}
+\arguments{
+\item{img}{Vector of character file names or list of \code{nifti} images}
+
+\item{elementId}{ID for the element in the DOM}
+
+\item{width}{Width of the widget}
+
+\item{height}{height of the widget}
+}
+\description{
+Wraps a widget for the Papaya JavaScript library
 }

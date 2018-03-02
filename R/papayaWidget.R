@@ -1,6 +1,11 @@
+#' @param img Vector of character file names or list of \code{nifti} images
+#' @param elementId ID for the element in the DOM
+#' @param width Width of the widget
+#' @param height height of the widget
+#'
 #' @title Creating a Papaya widget
 #'
-#' Wraps a widget for the Papaya JavaScript library
+#' @description Wraps a widget for the Papaya JavaScript library
 #'
 #' @import htmlwidgets
 #'
@@ -15,15 +20,8 @@ papayaWidget <- function(
   width = NULL, height = NULL) {
 
   img = checkimg(img)
-  # passingMethod = match.arg(passingMethod)
-  # if (passingMethod == "embed") {
-    fileData = sapply(img, base64enc::base64encode)
-    fileData <- jsonlite::toJSON(fileData)
-    # names(fileData) = "encodedImages"
-    # embed_params_def <- paste0("window.data",elementId,0:(length(img)-1)," = x.data[",0:(length(img)-1),"]; ",collapse="")
-    # embed_encoded_img_string <- paste0("\"data",elementId,0:(length(img)-1),"\",",collapse="")
-    # embed_encoded_img_string <- substr(embed_encoded_img_string,1,nchar(embed_encoded_img_string)-1)
-  # }
+  fileData = sapply(img, base64enc::base64encode)
+  fileData <- jsonlite::toJSON(fileData)
   if (is.null(elementId)) {
     elementId = basename(tempfile())
   }
