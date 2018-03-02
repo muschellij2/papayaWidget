@@ -2,6 +2,10 @@
 #' @param elementId ID for the element in the DOM
 #' @param width Width of the widget
 #' @param height height of the widget
+#' @param options to pass to papaya widget.  Should be a list with
+#' the same number of elements as images passed in.  Options can
+#' be generated using \code{\link{papayaOptions}}
+#'
 #'
 #' @title Creating a Papaya widget
 #'
@@ -10,14 +14,27 @@
 #' @import htmlwidgets
 #'
 #' @export
-#' @importFrom htmltools tags htmlDependency
 #' @importFrom neurobase checkimg
 #' @importFrom base64enc base64encode
 #' @importFrom jsonlite toJSON
+#' @examples
+#' img = kirby21.t1::get_t1_filenames()[1]
+#'
+#' papaya(img, options = papayaOptions(min = 0, max = 5e5))
+#' papaya(c(img, img),
+#' options = list(papayaOptions(alpha = 0.5),
+#' papayaOptions(alpha = 0.5, lut = "Red Overlay"))
+#' )
+#'
+#'
 papaya <- function(
   img,
   elementId = NULL,
-  width = NULL, height = NULL) {
+  width = NULL, height = NULL,
+  options = NULL
+  # ,
+  # options = papayaOptions()) {
+){
 
   img = checkimg(img)
   fileData = sapply(img, base64enc::base64encode)
@@ -25,12 +42,24 @@ papaya <- function(
   if (is.null(elementId)) {
     elementId = basename(tempfile())
   }
+  if (!is.null(options)) {
+    n_options = length(options)
+    n_imgs = length(img)
+    if (n_imgs > 1) {
+      assert_that(n_options == n_imgs)
+    } else {
+      options = list(options)
+    }
+    # options = fileData <- jsonlite::toJSON(fileData)
+  }
 
   x <- list(
     index = 0,
     id = elementId,
-    images = fileData
+    images = fileData,
+    options = options
   )
+
 
   # create widget
   htmlwidgets::createWidget(

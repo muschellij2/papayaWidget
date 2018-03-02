@@ -4,7 +4,8 @@
 \alias{papaya}
 \title{Creating a Papaya widget}
 \usage{
-papaya(img, elementId = NULL, width = NULL, height = NULL)
+papaya(img, elementId = NULL, width = NULL, height = NULL,
+  options = NULL)
 }
 \arguments{
 \item{img}{Vector of character file names or list of \code{nifti} images}
@@ -14,7 +15,22 @@ papaya(img, elementId = NULL, width = NULL, height = NULL)
 \item{width}{Width of the widget}
 
 \item{height}{height of the widget}
+
+\item{options}{to pass to papaya widget.  Should be a list with
+the same number of elements as images passed in.  Options can
+be generated using \code{\link{papayaOptions}}}
 }
 \description{
 Wraps a widget for the Papaya JavaScript library
+}
+\examples{
+img = kirby21.t1::get_t1_filenames()[1]
+
+papaya(img, options = papayaOptions(min = 0, max = 5e5))
+papaya(c(img, img),
+options = list(papayaOptions(alpha = 0.5),
+papayaOptions(alpha = 0.5, lut = "Red Overlay"))
+)
+
+
 }

@@ -1,6 +1,6 @@
 Package: papayaWidget
 Title: Rmarkdown papaya embedding
-Version: 0.5
+Version: 0.5.1
 Authors@R: c(person("John", "Muschelli", 
     email = "muschellij2@gmail.com", role = c("aut", "cre")), 
     person("Adi", "Gherman", email="adig@jhu.edu", role = c("aut")))
@@ -10,9 +10,11 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    htmltools,
     htmlwidgets,
     neurobase,
     base64enc,
-    jsonlite
+    jsonlite,
+    assertthat
+Suggest:
+    kirby21.t1
 RoxygenNote: 6.0.1

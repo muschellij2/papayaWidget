@@ -11,12 +11,14 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-        console.log("x index is ");
-        console.log(x.index);
+
         console.log("x id are ");
         console.log(x.id);
         console.log("x images are ");
         console.log(x.images);
+        console.log("x options are ");
+        var opts = x.options;
+        console.log(opts);
         var img = x.images;
         console.log("img");
         console.log(img.constructor.name);
@@ -29,6 +31,9 @@ HTMLWidgets.widget({
           mystring[i] = "img"+i;
         }
         params.encodedImages = mystring ;
+        for (var i = 0; i < img.length; ++i) {
+          params["img"+i] = opts[i];
+        }
         console.log(window);
         // img = img[0];
         // console.log(img.constructor.name);
