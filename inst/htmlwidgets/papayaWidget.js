@@ -20,22 +20,24 @@ HTMLWidgets.widget({
         var opts = x.options;
         console.log(opts);
         var img = x.images;
-        console.log("img");
-        console.log(img.constructor.name);
         // console.log(img[0]);
         // window.img = img;
         var params = [];
         var mystring = [];
-        for (var i = 0; i < img.length; ++i) {
-          window["img"+i] = img[i];
-          mystring[i] = "img"+i;
-        }
-        params.encodedImages = mystring ;
-        if (opts && opts.length > 0) {
-          for (var i = 0; i < opts.length; ++i) {
-            var ix = opts[i];
-            if (typeof ix !== 'undefined' && ix !== null) {
-              params["img"+i] = ix;
+        if (img && img.length > 0) {
+          console.log("img");
+          console.log(img.constructor.name);
+          for (var i = 0; i < img.length; ++i) {
+            window["img"+i] = img[i];
+            mystring[i] = "img"+i;
+          }
+          params.encodedImages = mystring ;
+          if (opts && opts.length > 0) {
+            for (var i = 0; i < opts.length; ++i) {
+              var ix = opts[i];
+              if (typeof ix !== 'undefined' && ix !== null) {
+                params["img"+i] = ix;
+              }
             }
           }
         }

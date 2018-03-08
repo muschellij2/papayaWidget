@@ -28,7 +28,7 @@
 #'
 #'
 papaya <- function(
-  img,
+  img = NULL,
   elementId = NULL,
   width = NULL, height = NULL,
   options = NULL
@@ -36,9 +36,13 @@ papaya <- function(
   # options = papayaOptions()) {
 ){
 
-  img = checkimg(img)
-  fileData = sapply(img, base64enc::base64encode)
-  fileData <- jsonlite::toJSON(fileData)
+  if (!is.null(img)) {
+    img = checkimg(img)
+    fileData = sapply(img, base64enc::base64encode)
+    fileData <- jsonlite::toJSON(fileData)
+  } else {
+    fileData = NULL
+  }
   if (is.null(elementId)) {
     elementId = basename(tempfile())
   }

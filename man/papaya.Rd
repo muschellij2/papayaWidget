@@ -4,7 +4,7 @@
 \alias{papaya}
 \title{Creating a Papaya widget}
 \usage{
-papaya(img, elementId = NULL, width = NULL, height = NULL,
+papaya(img = NULL, elementId = NULL, width = NULL, height = NULL,
   options = NULL)
 }
 \arguments{
