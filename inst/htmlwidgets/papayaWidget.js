@@ -31,8 +31,13 @@ HTMLWidgets.widget({
           mystring[i] = "img"+i;
         }
         params.encodedImages = mystring ;
-        for (var i = 0; i < img.length; ++i) {
-          params["img"+i] = opts[i];
+        if (opts && opts.length > 0) {
+          for (var i = 0; i < opts.length; ++i) {
+            var ix = opts[i];
+            if (typeof ix !== 'undefined' && ix !== null) {
+              params["img"+i] = ix;
+            }
+          }
         }
         console.log(window);
         // img = img[0];
