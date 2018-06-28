@@ -37,7 +37,7 @@ papaya <- function(
 ){
 
   if (!is.null(img)) {
-    img = checkimg(img)
+    img = checkimg(img, allow_array = TRUE)
     fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
   } else {
