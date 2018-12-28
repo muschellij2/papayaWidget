@@ -10,6 +10,8 @@ The goal of papayaWidget is to include a [`papaya`
 object](http://ric.uthscsa.edu/mango/papaya.html) in an Rmarkdown
 document.
 
+See the full docs at <http://johnmuschelli.com/papayaWidget>.
+
 ## Installation
 
 You can install the `papayaWidget` using:
@@ -31,13 +33,13 @@ library(neurobase)
 #> oro.nifti 0.9.11
 outdir = tempdir()
 download_t1_data(outdir = outdir)
-#> cloning into '/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph5Y1LV/filefe31746f9a74/kirby21.t1'...
+#> cloning into '/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpaCawuX/fileff7e5a955b14/kirby21.t1'...
 #> Receiving objects:   1% (2/117),    8 kb
 #> Receiving objects:  11% (13/117),    8 kb
 #> Receiving objects:  21% (25/117),    8 kb
 #> Receiving objects:  31% (37/117),    8 kb
 #> Receiving objects:  41% (48/117),    8 kb
-#> Receiving objects:  51% (60/117), 30706 kb
+#> Receiving objects:  51% (60/117), 30699 kb
 #> Receiving objects:  61% (72/117), 46544 kb
 #> Receiving objects:  71% (84/117), 46544 kb
 #> Receiving objects:  81% (95/117), 46544 kb

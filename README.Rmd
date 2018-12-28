@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 
 The goal of papayaWidget is to include a [`papaya` object](http://ric.uthscsa.edu/mango/papaya.html) in an Rmarkdown document. 
 
+See the full docs at http://johnmuschelli.com/papayaWidget.
+
 
 ## Installation
 
