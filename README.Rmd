@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+  [![Travis build status](https://travis-ci.com/muschellij2/papayaWidget.svg?branch=master)](https://travis-ci.com/muschellij2/papayaWidget)
+  
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# papayaWidget
+
+The goal of papayaWidget is to include a [`papaya` object](http://ric.uthscsa.edu/mango/papaya.html) in an Rmarkdown document. 
+
+
+## Installation
+
+You can install the `papayaWidget` using:
+
+``` r
+# install.packages("papayaWidget")
+devtools::install_github("muschellij2/papayaWidget")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(kirby21.t1)
+library(papayaWidget)
+library(neurobase)
+outdir = tempdir()
+download_t1_data(outdir = outdir)
+fname = kirby21.t1::get_t1_filenames(outdir = outdir)
+fname = fname[1]
+img = readnii(fname)
+papaya(img)
+```
