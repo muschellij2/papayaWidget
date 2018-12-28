@@ -7,8 +7,8 @@
 \usage{
 papayaOptions(alpha = NULL, icon = NULL, interpolation = NULL,
   lut = NULL, negative_lut = NULL, max = NULL, maxPercent = NULL,
-  min = NULL, minPercent = NULL, rotation = NULL, rotationPoint = NULL,
-  parametric = NULL, symmetric = NULL)
+  min = NULL, minPercent = NULL, rotation = NULL,
+  rotationPoint = NULL, parametric = NULL, symmetric = NULL)
 
 validateOptions(...)
 }
