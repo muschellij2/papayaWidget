@@ -7,10 +7,19 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     // TODO: define shared variables for this instance
+    console.log("el is");
+    console.log(el);
+    console.log("el.id is");
+    console.log(el.id);
+    var id = el.id;
+
 
     return {
 
       renderValue: function(x) {
+        console.log("x is");
+        console.log(x);
+
 
         console.log("x id are ");
         console.log(x.id);
@@ -50,7 +59,11 @@ HTMLWidgets.widget({
         //papaya.Container.addViewer = function (parentName, params, callback) {
         //papaya.Container.addViewer
         //papaya.Container.buildContainer()
-        papaya.Container.addViewer(id = x.id, params = params)
+        if (typeof id === 'undefined' || id === null) {
+          id = x.id;
+        }
+        papaya.Container.addViewer(id, params = params);
+        //papaya.Container.addViewer(x.id, params = params)
         // papaya.Container.resetViewer(x.index, params);
 
       },

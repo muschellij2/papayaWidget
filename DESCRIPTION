@@ -1,10 +1,12 @@
 Package: papayaWidget
-Title: Rmarkdown papaya embedding
-Version: 0.5.4
+Title: Embed an 'Papaya' Image Viewer
+Version: 0.5.5
 Authors@R: c(person("John", "Muschelli", 
     email = "muschellij2@gmail.com", role = c("aut", "cre")), 
     person("Adi", "Gherman", email="adig@jhu.edu", role = c("aut")))
-Description: Provides a method for incorporating papaya in an Rmarkdown document.
+Description: Provides a method for incorporating a 'papaya' in a document using
+    the 'htmlwidgets' library, wrapping the 'Papaya' JavaScript library
+    <http://ric.uthscsa.edu/mango/papaya.html> with some modifications.
 Depends: R (>= 3.0)
 License: GPL-2
 Encoding: UTF-8
@@ -17,4 +19,4 @@ Imports:
     assertthat
 Suggests:
     kirby21.t1
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

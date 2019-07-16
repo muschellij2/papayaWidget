@@ -1,13 +1,17 @@
 dependencies:
- - name: papaya
-   version: 0.1434
-   src: htmlwidgets/papaya
-   script:
+  - name: papaya
+    version: 0.1449
+    src: htmlwidgets/papaya
+    script:
     - papaya.js
     - main.js
-   stylesheet:
+    stylesheet:
     - papaya.css
     - base.css
+  - name: jquery
+    version: 3.4.1
+    src: htmlwidgets/jquery
+    script: jquery.min.js
  # - name: sampleimage
  #   version: 1
  #   src: htmlwidgets/sample-image
