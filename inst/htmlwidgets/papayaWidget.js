@@ -30,6 +30,7 @@ HTMLWidgets.widget({
         console.log(opts);
         var img = x.images;
         var image_names = x.image_names;
+        console.log("image_names are ");
         console.log(image_names);
         // console.log(img[0]);
         // window.img = img;
@@ -40,15 +41,16 @@ HTMLWidgets.widget({
           console.log(img.constructor.name);
           for (var i = 0; i < img.length; ++i) {
             iname = image_names[i];
-            window["img"+i] = img[i];
-            mystring[i] = "img"+i;
+            window[iname] = img[i];
+            mystring[i] = iname;
           }
           params.encodedImages = mystring ;
           if (opts && opts.length > 0) {
             for (var i = 0; i < opts.length; ++i) {
               var ix = opts[i];
+              iname = image_names[i];
               if (typeof ix !== 'undefined' && ix !== null) {
-                params["img"+i] = ix;
+                params[iname] = ix;
               }
             }
           }
