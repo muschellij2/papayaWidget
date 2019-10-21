@@ -1,6 +1,6 @@
 Package: papayaWidget
 Title: Embed an 'Papaya' Image Viewer
-Version: 0.5.5
+Version: 0.6.0
 Authors@R: c(person("John", "Muschelli", 
     email = "muschellij2@gmail.com", role = c("aut", "cre")), 
     person("Adi", "Gherman", email="adig@jhu.edu", role = c("aut")))
