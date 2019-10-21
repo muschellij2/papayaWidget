@@ -40,8 +40,9 @@ papaya <- function(
   if (!is.null(img)) {
     img = checkimg(img, allow_array = TRUE)
     image_names = sapply(img, function(x) {
-      basename(tempfile())
+      basename(tempfile(pattern = "img_"))
     })
+    image_names = unname(image_names)
     fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
   } else {
