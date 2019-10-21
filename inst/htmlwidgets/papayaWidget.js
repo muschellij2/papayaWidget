@@ -29,6 +29,7 @@ HTMLWidgets.widget({
         var opts = x.options;
         console.log(opts);
         var img = x.images;
+        var image_names = x.image_names;
         // console.log(img[0]);
         // window.img = img;
         var params = [];
@@ -37,6 +38,7 @@ HTMLWidgets.widget({
           console.log("img");
           console.log(img.constructor.name);
           for (var i = 0; i < img.length; ++i) {
+            iname = image_names[i];
             window["img"+i] = img[i];
             mystring[i] = "img"+i;
           }

@@ -39,7 +39,7 @@ papaya <- function(
   image_names = NULL
   if (!is.null(img)) {
     img = checkimg(img, allow_array = TRUE)
-    image_names = sapply(img, function() {
+    image_names = sapply(img, function(x) {
       basename(tempfile())
     })
     fileData = sapply(img, base64enc::base64encode)
@@ -65,9 +65,9 @@ papaya <- function(
     index = 0,
     id = elementId,
     images = fileData,
-    image_names = image_names,
     options = options
   )
+  x$image_names = image_names
 
 
   # create widget
