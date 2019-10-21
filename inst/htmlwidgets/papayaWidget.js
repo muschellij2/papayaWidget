@@ -30,6 +30,7 @@ HTMLWidgets.widget({
         console.log(opts);
         var img = x.images;
         var image_names = x.image_names;
+        console.log(image_names);
         // console.log(img[0]);
         // window.img = img;
         var params = [];
