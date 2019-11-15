@@ -8,7 +8,7 @@
 #' @param sync_view should the view be synced to other Papaya viewers?
 #' @param hide_toolbar Hide the toolbar for this viewer?
 #' @param hide_controls Hide the controls (increment) for this viewer?
-#' @param orthogonal Should an orthogonal view be displayed (\code+TRUE})
+#' @param orthogonal Should an orthogonal view be displayed (\code{TRUE})
 #' versus just a slice (\code{FALSE}).
 #' @title Creating a Papaya widget
 #'
