@@ -5,7 +5,8 @@
 \title{Creating a Papaya widget}
 \usage{
 papaya(img = NULL, elementId = NULL, width = NULL, height = NULL,
-  options = NULL, sync_view = FALSE, hide_toolbar = FALSE)
+  options = NULL, sync_view = FALSE, hide_toolbar = FALSE,
+  hide_controls = FALSE)
 }
 \arguments{
 \item{img}{Vector of character file names or list of \code{nifti} images}
@@ -23,6 +24,8 @@ be generated using \code{\link{papayaOptions}}}
 \item{sync_view}{should the view be synced to other Papaya viewers?}
 
 \item{hide_toolbar}{Hide the toolbar for this viewer?}
+
+\item{hide_controls}{Hide the controls (increment) for this viewer?}
 }
 \description{
 Wraps a widget for the Papaya JavaScript library

@@ -38,6 +38,10 @@ HTMLWidgets.widget({
 
         var hide_toolbar = x.hide_toolbar;
         hide_toolbar = Boolean(hide_toolbar);
+
+        var show_controls = x.show_controls;
+        show_controls = Boolean(show_controls);
+
         console.log("ignore sync is ");
         console.log(ignore_sync);
 
@@ -55,6 +59,7 @@ HTMLWidgets.widget({
           }
           params.encodedImages = mystring ;
           params["kioskMode"] = hide_toolbar;
+          params["showControls"] = show_controls;
 
           if (opts && opts.length > 0) {
             for (var i = 0; i < opts.length; ++i) {

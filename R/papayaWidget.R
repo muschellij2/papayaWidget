@@ -7,6 +7,7 @@
 #' be generated using \code{\link{papayaOptions}}
 #' @param sync_view should the view be synced to other Papaya viewers?
 #' @param hide_toolbar Hide the toolbar for this viewer?
+#' @param hide_controls Hide the controls (increment) for this viewer?
 #'
 #' @title Creating a Papaya widget
 #'
@@ -34,7 +35,8 @@ papaya <- function(
   width = NULL, height = NULL,
   options = NULL,
   sync_view = FALSE,
-  hide_toolbar = FALSE
+  hide_toolbar = FALSE,
+  hide_controls = FALSE
   # ,
   # options = papayaOptions()) {
 ){
@@ -71,7 +73,8 @@ papaya <- function(
     images = fileData,
     options = options,
     ignore_sync = !sync_view,
-    hide_toolbar = hide_toolbar
+    hide_toolbar = hide_toolbar,
+    show_controls = !hide_controls
   )
   x$image_names = image_names
 
