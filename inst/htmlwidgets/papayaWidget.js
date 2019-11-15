@@ -35,6 +35,9 @@ HTMLWidgets.widget({
 
         var ignore_sync = x.ignore_sync;
         ignore_sync = Boolean(ignore_sync);
+
+        var hide_toolbar = x.hide_toolbar;
+        hide_toolbar = Boolean(hide_toolbar);
         console.log("ignore sync is ");
         console.log(ignore_sync);
 
@@ -51,6 +54,8 @@ HTMLWidgets.widget({
             mystring[i] = iname;
           }
           params.encodedImages = mystring ;
+          params["kioskMode"] = hide_toolbar;
+
           if (opts && opts.length > 0) {
             for (var i = 0; i < opts.length; ++i) {
               var ix = opts[i];

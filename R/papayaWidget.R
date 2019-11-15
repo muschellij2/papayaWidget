@@ -6,7 +6,7 @@
 #' the same number of elements as images passed in.  Options can
 #' be generated using \code{\link{papayaOptions}}
 #' @param sync_view should the view be synced to other Papaya viewers?
-#'
+#' @param hide_toolbar Hide the toolbar for this viewer?
 #'
 #' @title Creating a Papaya widget
 #'
@@ -33,7 +33,8 @@ papaya <- function(
   elementId = NULL,
   width = NULL, height = NULL,
   options = NULL,
-  sync_view = FALSE
+  sync_view = FALSE,
+  hide_toolbar = FALSE
   # ,
   # options = papayaOptions()) {
 ){
@@ -69,7 +70,8 @@ papaya <- function(
     id = elementId,
     images = fileData,
     options = options,
-    ignore_sync = !sync_view
+    ignore_sync = !sync_view,
+    hide_toolbar = hide_toolbar
   )
   x$image_names = image_names
 
