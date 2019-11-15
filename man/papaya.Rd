@@ -26,9 +26,6 @@ be generated using \code{\link{papayaOptions}}}
 \item{hide_toolbar}{Hide the toolbar for this viewer?}
 
 \item{hide_controls}{Hide the controls (increment) for this viewer?}
-
-\item{orthogonal}{Should an orthogonal view be displayed (\code(TRUE))
-versus just a slice (\code{FALSE}).}
 }
 \description{
 Wraps a widget for the Papaya JavaScript library
