@@ -8,7 +8,8 @@
 #' @param sync_view should the view be synced to other Papaya viewers?
 #' @param hide_toolbar Hide the toolbar for this viewer?
 #' @param hide_controls Hide the controls (increment) for this viewer?
-#'
+#' @param orthogonal Should an orthogonal view be displayed (\code(TRUE))
+#' versus just a slice (\code{FALSE}).
 #' @title Creating a Papaya widget
 #'
 #' @description Wraps a widget for the Papaya JavaScript library
@@ -36,7 +37,8 @@ papaya <- function(
   options = NULL,
   sync_view = FALSE,
   hide_toolbar = FALSE,
-  hide_controls = FALSE
+  hide_controls = FALSE,
+  orthogonal = TRUE
   # ,
   # options = papayaOptions()) {
 ){
@@ -74,7 +76,8 @@ papaya <- function(
     options = options,
     ignore_sync = !sync_view,
     hide_toolbar = hide_toolbar,
-    show_controls = !hide_controls
+    show_controls = !hide_controls,
+    orthogonal = orthogonal
   )
   x$image_names = image_names
 

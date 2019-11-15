@@ -42,6 +42,9 @@ HTMLWidgets.widget({
         var show_controls = x.show_controls;
         show_controls = Boolean(show_controls);
 
+        var orthogonal = x.orthogonal;
+        orthogonal = Boolean(orthogonal);
+
         console.log("ignore sync is ");
         console.log(ignore_sync);
 
@@ -60,6 +63,7 @@ HTMLWidgets.widget({
           params.encodedImages = mystring ;
           params["kioskMode"] = hide_toolbar;
           params["showControls"] = show_controls;
+          params["orthogonal"] = orthogonal;
 
           if (opts && opts.length > 0) {
             for (var i = 0; i < opts.length; ++i) {
