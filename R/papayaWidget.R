@@ -5,6 +5,7 @@
 #' @param options to pass to papaya widget.  Should be a list with
 #' the same number of elements as images passed in.  Options can
 #' be generated using \code{\link{papayaOptions}}
+#' @param sync_view should the view be synced to other Papaya viewers?
 #'
 #'
 #' @title Creating a Papaya widget
@@ -31,7 +32,8 @@ papaya <- function(
   img = NULL,
   elementId = NULL,
   width = NULL, height = NULL,
-  options = NULL
+  options = NULL,
+  sync_view = FALSE
   # ,
   # options = papayaOptions()) {
 ){
@@ -66,7 +68,8 @@ papaya <- function(
     index = 0,
     id = elementId,
     images = fileData,
-    options = options
+    options = options,
+    ignore_sync = !sync_view
   )
   x$image_names = image_names
 

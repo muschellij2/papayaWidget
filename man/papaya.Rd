@@ -5,7 +5,7 @@
 \title{Creating a Papaya widget}
 \usage{
 papaya(img = NULL, elementId = NULL, width = NULL, height = NULL,
-  options = NULL)
+  options = NULL, sync_view = FALSE)
 }
 \arguments{
 \item{img}{Vector of character file names or list of \code{nifti} images}
@@ -19,6 +19,8 @@ papaya(img = NULL, elementId = NULL, width = NULL, height = NULL,
 \item{options}{to pass to papaya widget.  Should be a list with
 the same number of elements as images passed in.  Options can
 be generated using \code{\link{papayaOptions}}}
+
+\item{sync_view}{should the view be synced to other Papaya viewers?}
 }
 \description{
 Wraps a widget for the Papaya JavaScript library

@@ -32,6 +32,12 @@ HTMLWidgets.widget({
         var image_names = x.image_names;
         console.log("image_names are ");
         console.log(image_names);
+
+        var ignore_sync = x.ignore_sync;
+        ignore_sync = Boolean(ignore_sync);
+        console.log("ignore sync is ");
+        console.log(ignore_sync);
+
         // console.log(img[0]);
         // window.img = img;
         var params = [];
@@ -68,6 +74,9 @@ HTMLWidgets.widget({
           id = x.id;
         }
         papaya.Container.addViewer(id, params = params);
+        papaya.Container.syncViewers = true;
+        var container_number = papayaContainers.length - 1;
+        papayaContainers[container_number].viewer.ignoreSync = ignore_sync;
         //papaya.Container.addViewer(x.id, params = params)
         // papaya.Container.resetViewer(x.index, params);
 
