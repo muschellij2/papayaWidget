@@ -1,6 +1,6 @@
 Package: papayaWidget
 Title: Embed an 'Papaya' Image Viewer
-Version: 0.7.0
+Version: 0.7.1
 Authors@R: c(person("John", "Muschelli", 
     email = "muschellij2@gmail.com", role = c("aut", "cre")), 
     person("Adi", "Gherman", email="adig@jhu.edu", role = c("aut")))
@@ -18,5 +18,6 @@ Imports:
     jsonlite,
     assertthat
 Suggests:
-    kirby21.t1
-RoxygenNote: 6.1.1
+    kirby21.t1,
+    shiny
+RoxygenNote: 7.0.2

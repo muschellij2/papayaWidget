@@ -28,3 +28,12 @@ is useful if you want to save an expression in a variable.}
 Output and render functions for using papayaWidget within Shiny
 applications and interactive Rmd documents.
 }
+\examples{
+file = system.file("examples", "kirby21.R", package = "papayaWidget")
+if (requireNamespace("shiny", quietly = TRUE) &&
+    file.exists(file)) {
+   app = source(file)
+}
+papayaOutput("random_id")
+renderPapaya({papaya()})
+}

@@ -29,6 +29,7 @@
 #' papayaOptions(alpha = 0.5, lut = "Red Overlay"))
 #' )
 #'
+#' papaya()
 #'
 papaya <- function(
   img = NULL,
@@ -110,6 +111,13 @@ papaya <- function(
 #' @name papayaWidget-shiny
 #'
 #' @export
+#' @examples
+#' file = system.file("examples", "kirby21.R", package = "papayaWidget")
+#' if (requireNamespace("shiny", quietly = TRUE) &&
+#'     file.exists(file)) {
+#'    app = source(file)
+#' }
+#' papayaOutput("random_id")
 papayaOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, "papayaWidget", width,
                                  height, package = "papayaWidget")
@@ -117,6 +125,8 @@ papayaOutput <- function(outputId, width = '100%', height = '400px'){
 
 #' @rdname papayaWidget-shiny
 #' @export
+#' @examples
+#' renderPapaya({papaya()})
 renderPapaya <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, papayaOutput, env, quoted = TRUE)

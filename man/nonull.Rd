@@ -16,3 +16,6 @@ Exclude NULL elements from a list
 adapted by
 \url{https://github.com/rstudio/leaflet/blob/master/R/utils.R}
 }
+\examples{
+nonull(NULL)
+}

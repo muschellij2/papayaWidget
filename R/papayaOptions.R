@@ -28,6 +28,9 @@
 #' @export
 #' @examples
 #' papayaOptions(alpha = 0.5)
+#' papayaOptions()
+#' papayaOptions(rotation = c(0, 0, 45),
+#' parametric = TRUE, rotationPoint = "center")
 papayaOptions = function(
   alpha = NULL,
   icon = NULL,

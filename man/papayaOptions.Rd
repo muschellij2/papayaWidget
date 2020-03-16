@@ -5,10 +5,21 @@
 \alias{validateOptions}
 \title{Options for Papaya Image}
 \usage{
-papayaOptions(alpha = NULL, icon = NULL, interpolation = NULL,
-  lut = NULL, negative_lut = NULL, max = NULL, maxPercent = NULL,
-  min = NULL, minPercent = NULL, rotation = NULL,
-  rotationPoint = NULL, parametric = NULL, symmetric = NULL)
+papayaOptions(
+  alpha = NULL,
+  icon = NULL,
+  interpolation = NULL,
+  lut = NULL,
+  negative_lut = NULL,
+  max = NULL,
+  maxPercent = NULL,
+  min = NULL,
+  minPercent = NULL,
+  rotation = NULL,
+  rotationPoint = NULL,
+  parametric = NULL,
+  symmetric = NULL
+)
 
 validateOptions(...)
 }
@@ -55,4 +66,7 @@ Options for Papaya Image
 }
 \examples{
 papayaOptions(alpha = 0.5)
+papayaOptions()
+papayaOptions(rotation = c(0, 0, 45),
+parametric = TRUE, rotationPoint = "center")
 }

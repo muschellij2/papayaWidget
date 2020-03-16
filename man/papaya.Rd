@@ -4,9 +4,17 @@
 \alias{papaya}
 \title{Creating a Papaya widget}
 \usage{
-papaya(img = NULL, elementId = NULL, width = NULL, height = NULL,
-  options = NULL, sync_view = FALSE, hide_toolbar = FALSE,
-  hide_controls = FALSE, orthogonal = TRUE)
+papaya(
+  img = NULL,
+  elementId = NULL,
+  width = NULL,
+  height = NULL,
+  options = NULL,
+  sync_view = FALSE,
+  hide_toolbar = FALSE,
+  hide_controls = FALSE,
+  orthogonal = TRUE
+)
 }
 \arguments{
 \item{img}{Vector of character file names or list of \code{nifti} images}
@@ -42,5 +50,6 @@ options = list(papayaOptions(alpha = 0.5),
 papayaOptions(alpha = 0.5, lut = "Red Overlay"))
 )
 
+papaya()
 
 }
