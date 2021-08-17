@@ -70,7 +70,7 @@ papaya <- function(
     image_names = unname(image_names)
     if (!is.null(title) && is.character(title)) {
       title = unname(paste(title, collapse = " "))
-      image_names[[1]] = title
+      image_names[[length(image_names)]] = title
     }
     fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
