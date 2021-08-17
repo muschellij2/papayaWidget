@@ -112,7 +112,8 @@ validateOptions = function(...) {
   l = L[names(L) %in% logs]
   for (i in seq_along(l)) {
     assert_that(is.flag(l[[i]]))
-    l[[i]] = tolower(as.character(l[[i]]))
+    # JS {x: "true"} is not same as {x: true}
+    # l[[i]] = tolower(as.character(l[[i]]))
   }
   L[names(L) %in% logs] = l
   return(L)

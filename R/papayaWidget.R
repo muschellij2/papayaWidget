@@ -10,6 +10,10 @@
 #' @param hide_controls Hide the controls (increment) for this viewer?
 #' @param orthogonal Should an orthogonal view be displayed (\code{TRUE})
 #' versus just a slice (\code{FALSE}).
+#' @param interpolation Should smoothing/interpolation be done in the viewer?
+#' This can be overridden if individual image options set \code{interpolation}
+#' as well
+#' @param title the title for the overlay itself
 #' @title Creating a Papaya widget
 #'
 #' @description Wraps a widget for the Papaya JavaScript library
@@ -21,15 +25,27 @@
 #' @importFrom base64enc base64encode
 #' @importFrom jsonlite toJSON
 #' @examples
+#' papaya(interpolation = TRUE)
+#' papaya(interpolation = FALSE)
+#'
 #' img = kirby21.t1::get_t1_filenames()[1]
 #'
-#' papaya(img, options = papayaOptions(min = 0, max = 5e5))
+#' papaya(img, options = papayaOptions(min = 0, max = 8e5))
 #' papaya(c(img, img),
 #' options = list(papayaOptions(alpha = 0.5),
 #' papayaOptions(alpha = 0.5, lut = "Red Overlay"))
 #' )
 #'
-#' papaya()
+#' \dontrun{
+#' papaya(img, options = papayaOptions(min = 0, max = 8e5))
+#' papaya(c(img, img),
+#' options = list(papayaOptions(alpha = 0.5),
+#' papayaOptions(alpha = 0.5, lut = "Red Overlay"))
+#' )
+#' nii = neurobase::readnii(img)
+#' nii = nii < 3e5 & nii > 1e5
+#' papaya(list(img, nii), options = list(list(), papayaOptions(interpolation = FALSE)))
+#' }
 #'
 papaya <- function(
   img = NULL,
@@ -39,22 +55,30 @@ papaya <- function(
   sync_view = FALSE,
   hide_toolbar = FALSE,
   hide_controls = FALSE,
-  orthogonal = TRUE
-  # ,
+  orthogonal = TRUE,
+  interpolation = TRUE,
+  title = NULL
   # options = papayaOptions()) {
 ){
-
-  image_names = NULL
+  #
+  image_names = title
   if (!is.null(img)) {
     img = checkimg(img, allow_array = TRUE)
     image_names = sapply(img, function(x) {
       basename(tempfile(pattern = "img_"))
     })
     image_names = unname(image_names)
+    if (!is.null(title) && is.character(title)) {
+      title = unname(paste(title, collapse = " "))
+      image_names[[1]] = title
+    }
     fileData = sapply(img, base64enc::base64encode)
     fileData <- jsonlite::toJSON(fileData)
   } else {
     fileData = NULL
+    if (!is.null(title)) {
+      warning("title doesn't work if no images were given")
+    }
   }
   if (is.null(elementId)) {
     elementId = basename(tempfile())
@@ -78,7 +102,8 @@ papaya <- function(
     ignore_sync = !sync_view,
     hide_toolbar = hide_toolbar,
     show_controls = !hide_controls,
-    orthogonal = orthogonal
+    orthogonal = orthogonal,
+    interpolation = interpolation
   )
   x$image_names = image_names
 

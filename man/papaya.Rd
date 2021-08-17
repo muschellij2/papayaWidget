@@ -13,7 +13,9 @@ papaya(
   sync_view = FALSE,
   hide_toolbar = FALSE,
   hide_controls = FALSE,
-  orthogonal = TRUE
+  orthogonal = TRUE,
+  interpolation = TRUE,
+  title = NULL
 )
 }
 \arguments{
@@ -37,19 +39,37 @@ be generated using \code{\link{papayaOptions}}}
 
 \item{orthogonal}{Should an orthogonal view be displayed (\code{TRUE})
 versus just a slice (\code{FALSE}).}
+
+\item{interpolation}{Should smoothing/interpolation be done in the viewer?
+This can be overridden if individual image options set \code{interpolation}
+as well}
+
+\item{title}{the title for the overlay itself}
 }
 \description{
 Wraps a widget for the Papaya JavaScript library
 }
 \examples{
+papaya(interpolation = TRUE)
+papaya(interpolation = FALSE)
+
 img = kirby21.t1::get_t1_filenames()[1]
 
-papaya(img, options = papayaOptions(min = 0, max = 5e5))
+papaya(img, options = papayaOptions(min = 0, max = 8e5))
 papaya(c(img, img),
 options = list(papayaOptions(alpha = 0.5),
 papayaOptions(alpha = 0.5, lut = "Red Overlay"))
 )
 
-papaya()
+\dontrun{
+papaya(img, options = papayaOptions(min = 0, max = 8e5))
+papaya(c(img, img),
+options = list(papayaOptions(alpha = 0.5),
+papayaOptions(alpha = 0.5, lut = "Red Overlay"))
+)
+nii = neurobase::readnii(img)
+nii = nii < 3e5 & nii > 1e5
+papaya(list(img, nii), options = list(list(), papayaOptions(interpolation = FALSE)))
+}
 
 }

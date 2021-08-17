@@ -45,12 +45,41 @@ HTMLWidgets.widget({
         var orthogonal = x.orthogonal;
         orthogonal = Boolean(orthogonal);
 
+        console.log("orthogonal is ");
+        console.log(orthogonal);
+
+        console.log("x.interpolation is ");
+        console.log(x.interpolation);
+        var interp = x.interpolation;
+        interp = Boolean(interp);
+        console.log("interp is ");
+        console.log(interp);
+
+        function truefalse(x) {
+          if (x === "false") {
+            console.log("changing to boolean");
+            x = false;
+          }
+          if (x === "true") {
+            console.log("changing to boolean");
+            x = true;
+          }
+          return x ;
+        }
+
         console.log("ignore sync is ");
         console.log(ignore_sync);
 
         // console.log(img[0]);
         // window.img = img;
         var params = [];
+        params["kioskMode"] = hide_toolbar;
+        params["showControls"] = show_controls;
+        params["orthogonal"] = orthogonal;
+        params["interpolation"] = interp;
+        params["smoothDisplay"] = interp;
+
+
         var mystring = [];
         if (img && img.length > 0) {
           console.log("img");
@@ -61,15 +90,29 @@ HTMLWidgets.widget({
             mystring[i] = iname;
           }
           params.encodedImages = mystring ;
-          params["kioskMode"] = hide_toolbar;
-          params["showControls"] = show_controls;
-          params["orthogonal"] = orthogonal;
 
           if (opts && opts.length > 0) {
             for (var i = 0; i < opts.length; ++i) {
               var ix = opts[i];
               iname = image_names[i];
+              console.log("iname is");
+              console.log(iname);
+              console.log("ix");
+              console.log(ix);
               if (typeof ix !== 'undefined' && ix !== null) {
+                console.log("ix.length");
+                console.log(ix.length);
+                console.log("typeofix");
+                console.log(typeof(ix));
+                // for (opt in ix) {
+                //   var opt = ix[j];
+                //   console.log("opt is");
+                //   console.log(opt);
+                //   opt = truefalse(opt) ;
+                //   console.log("opt is");
+                //   console.log(opt);
+                //   ix[j] = opt;
+                // }
                 params[iname] = ix;
               }
             }
@@ -79,6 +122,7 @@ HTMLWidgets.widget({
         // img = img[0];
         // console.log(img.constructor.name);
         //params.encodedImages = ["img0"];
+        console.log("params");
         console.log(params);
         //papaya.Container.addViewer
         //papaya.Container.addViewer = function (parentName, params, callback) {
